@@ -1,0 +1,61 @@
+#project {
+    overflow: hidden;
+    width: 100vw;
+    max-width: 65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.projectTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    padding-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.projectDesc {
+    font-weight: 200;
+    font-size: 1rem;
+    max-width: 50rem;
+    padding: 0 2rem;
+
+}
+
+.projectBars {
+    margin: 1.5rem;
+    width: 100vw;
+    max-width: 80%;
+    text-align: left;
+}
+
+.projectBar {
+    display: flex;
+    margin: 1rem;
+    padding: 1.rem 2rem;
+    border-radius: 0.5rem;
+    background: rgb(50, 50, 50);
+}
+
+.projectBarText>p {
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+@media screen and (max-width:720px) {
+    .skillBarText>p {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .skillBarText>p {
+        font-size: 3vw;
+    }
+    .skillBarText>h2 {
+        font-size: 5vw;
+    }
+}
