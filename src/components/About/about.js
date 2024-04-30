@@ -8,7 +8,7 @@ const About = () => {
             <div className="aboutContent">
                 <span className="Introduction">My name is Mohammad.</span>
             </div>
-            <img src={bg} alt="Profile Photo" className="bg"></img>
+            <img src={bg} alt="Profile" className="bg"></img>
         </section>
     )
 }
