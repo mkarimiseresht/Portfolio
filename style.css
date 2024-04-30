@@ -1,4 +1,4 @@
-*{
+* {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #584a41;
+    background: #584a40;
     color: white;
     overflow: hidden;
     overflow-y: scroll;
