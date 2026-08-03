@@ -1,14 +1,114 @@
+/* ===========================================================
+   Design tokens
+   Theme: "analyst's dashboard" — ink navy / paper white,
+   teal + amber accents, monospace used for real numbers only.
+=========================================================== */
+:root {
+  --bg: #0B1220;
+  --surface: #131B2E;
+  --surface-raised: #1A2338;
+  --border: #26314A;
+  --text: #E7ECF4;
+  --text-muted: #92A0B8;
+  --accent: #2DD4BF;
+  --accent-strong: #5EEAD4;
+  --accent-2: #F5A623;
+  --danger: #F87171;
+
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius: 10px;
+  --shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+  --nav-height: 4rem;
+  --transition: 200ms ease;
+}
+
+[data-theme='light'] {
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --border: #DDE3EC;
+  --text: #101623;
+  --text-muted: #4B5768;
+  --accent: #0F9E8E;
+  --accent-strong: #0C8378;
+  --accent-2: #C97C0F;
+  --shadow: 0 20px 40px -20px rgba(16,22,35,0.15);
+}
+
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   text-decoration: none;
-   background: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background: #2d4635;
-    color: white;
-    overflow: hidden;
-    overflow-y: scroll;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background var(--transition), color var(--transition);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0B1220;
+}
+
+/* focus visibility, kept even though we style buttons/links custom */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* scroll-reveal utility, toggled by useScrollReveal hook */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
