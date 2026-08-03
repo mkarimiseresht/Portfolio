@@ -4,8 +4,7 @@ import { Link } from "react-scroll";
 import profile from "../../data/profile";
 import useScrollReveal from "../../hooks/useScrollReveal";
 import { ArrowUpRightIcon } from "../Icons/Icons";
-
-const SPARK_POINTS = "0,60 40,45 80,52 120,20 160,34 200,10 240,26 280,4 320,18";
+import photo from "../../assets/photo.jpg";
 
 const TypedTagline = ({ text }) => {
   const [display, setDisplay] = useState("");
@@ -39,54 +38,68 @@ const About = ({ githubProfile, status }) => {
 
   return (
     <section id="about" className="about">
-      <div className="about__spark" aria-hidden="true">
-        <svg viewBox="0 0 320 70" preserveAspectRatio="none">
-          <polyline
-            points={SPARK_POINTS}
-            fill="none"
-            stroke="var(--accent)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="about__spark-line"
-          />
-        </svg>
-      </div>
+      <div className="about__grid">
+        <div className="about__content reveal" ref={revealRef}>
+          <p className="about__eyebrow mono">Portfolio / {profile.role}</p>
+          <h1 className="about__name">{profile.name}</h1>
+          <h2 className="about__tagline">
+            <TypedTagline text={profile.tagline} />
+          </h2>
+          <p className="about__bio">{profile.bio}</p>
 
-      <div className="about__content" ref={revealRef}>
-        <p className="about__eyebrow mono">Portfolio / {profile.role}</p>
-        <h1 className="about__name">{profile.name}</h1>
-        <h2 className="about__tagline">
-          <TypedTagline text={profile.tagline} />
-        </h2>
-        <p className="about__bio">{profile.bio}</p>
+          <div className="about__cta">
+            <Link to="project" smooth={true} duration={500} offset={-80} className="btn btn--primary">
+              View projects
+            </Link>
+            <Link to="contact" smooth={true} duration={500} offset={-80} className="btn btn--ghost">
+              Get in touch
+            </Link>
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--ghost about__resume"
+            >
+              Resume <ArrowUpRightIcon width={14} height={14} />
+            </a>
+          </div>
 
-        <div className="about__cta">
-          <Link to="project" smooth={true} duration={500} offset={-80} className="btn btn--primary">
-            View projects
-          </Link>
-          <Link to="contact" smooth={true} duration={500} offset={-80} className="btn btn--ghost">
-            Get in touch
-          </Link>
-          <a
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--ghost about__resume"
-          >
-            Resume <ArrowUpRightIcon width={14} height={14} />
-          </a>
+          <div className="about__stats" aria-live="polite">
+            {stats.map((s) => (
+              <div className="about__stat" key={s.label}>
+                <span className="about__stat-value mono">
+                  {status === "loading" ? "—" : s.value ?? "—"}
+                </span>
+                <span className="about__stat-label">{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="about__stats" aria-live="polite">
-          {stats.map((s) => (
-            <div className="about__stat" key={s.label}>
-              <span className="about__stat-value mono">
-                {status === "loading" ? "—" : s.value ?? "—"}
-              </span>
-              <span className="about__stat-label">{s.label}</span>
+        <div className="about__photo-wrap reveal" aria-hidden="false">
+          <div className="about__photo-frame">
+            <div className="about__mesh" aria-hidden="true">
+              <div className="about__mesh-glow" />
+              <svg className="about__mesh-grid" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+                {Array.from({ length: 13 }).map((_, i) => (
+                  <line key={`h${i}`} x1="0" y1={i * 20} x2="240" y2={i * 20} />
+                ))}
+                {Array.from({ length: 13 }).map((_, i) => (
+                  <line key={`v${i}`} x1={i * 20} y1="0" x2={i * 20} y2="240" />
+                ))}
+                <circle cx="60" cy="100" r="2.6" />
+                <circle cx="160" cy="60" r="2" />
+                <circle cx="180" cy="160" r="2.8" />
+                <circle cx="100" cy="180" r="2" />
+              </svg>
             </div>
-          ))}
+            <img src={photo} alt={profile.name} className="about__photo" />
+            <span className="about__photo-corner about__photo-corner--tl" />
+            <span className="about__photo-corner about__photo-corner--tr" />
+            <span className="about__photo-corner about__photo-corner--bl" />
+            <span className="about__photo-corner about__photo-corner--br" />
+          </div>
+          <div className="about__photo-tag mono">{profile.role}</div>
         </div>
       </div>
     </section>
