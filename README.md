@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Mohammad Karimiseresht — Portfolio
+
+## Editing your content
+
+- **Bio, role, links, email, skills** → `src/data/profile.js`
+- **Featured projects** (hand-picked, shown above the GitHub grid) → `src/data/featuredProjects.js`
+- **Resume** → drop your PDF into the `public` folder named `resume.pdf` (or change `resumeUrl` in `profile.js`)
+- **GitHub projects grid** → fetched automatically at runtime from `https://api.github.com/users/<githubUsername>`, no editing needed — just make sure `githubUsername` in `profile.js` is correct
+- **Colors / fonts** → CSS variables at the top of `public/style.css`
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,0 +1,44 @@
+.skills {
+  padding: 5rem 6vw;
+}
+
+.section-eyebrow {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  margin-bottom: 2.2rem;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.9rem;
+}
+
+.skills__chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 500;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.skills__chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.skills__chip-index {
+  color: var(--accent-2);
+  font-size: 0.78rem;
+}
