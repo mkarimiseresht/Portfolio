@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import profile from "../../data/profile";
 import useScrollReveal from "../../hooks/useScrollReveal";
 import { ArrowUpRightIcon } from "../Icons/Icons";
-import photo from "../../assets/photo.jpg";
+import photo from "../../assets/photo2.jpg";
 
 const TypedTagline = ({ text }) => {
   const [display, setDisplay] = useState("");
