@@ -79,8 +79,8 @@ const About = ({ githubProfile, status }) => {
         </div>
 
         <div className="about__photo-wrap in-view" aria-hidden="false">
-          <div className="about__photo-frame" ref={parallaxRef}>
-            <div className="about__mesh" aria-hidden="true">
+          <div className="about__photo-frame">
+            <div className="about__mesh" aria-hidden="true" ref={parallaxRef}>
               <div className="about__mesh-glow" />
               <svg className="about__mesh-grid" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
                 {Array.from({ length: 13 }).map((_, i) => (
