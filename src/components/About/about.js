@@ -76,7 +76,7 @@ const About = ({ githubProfile, status }) => {
           </div>
         </div>
 
-        <div className="about__photo-wrap reveal" aria-hidden="false">
+        <div className="about__photo-wrap in-view" aria-hidden="false">
           <div className="about__photo-frame">
             <div className="about__mesh" aria-hidden="true">
               <div className="about__mesh-glow" />
