@@ -30,7 +30,7 @@ const TypedTagline = ({ text }) => {
 
 const About = ({ githubProfile, status }) => {
   const revealRef = useScrollReveal();
-  const parallaxRef = useParallax(0.12);
+  const parallaxRef = useParallax(0.15, "x", 70);
 
   const stats = [
     { label: "public repos", value: githubProfile?.publicRepos },

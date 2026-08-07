@@ -1,11 +1,16 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Applies a subtle vertical parallax offset to an element as the page scrolls,
- * based on the element's position relative to the viewport center.
+ * Applies a parallax offset to an element as the page scrolls, driven by
+ * raw scroll distance (so it keeps building as you scroll, rather than
+ * maxing out once the element is centered in the viewport).
  * Respects prefers-reduced-motion by doing nothing at all in that case.
+ *
+ * @param {number} speed - how much of the scroll distance to translate by
+ * @param {"x" | "y"} axis - direction to move
+ * @param {number} max - max offset in px, in either direction
  */
-const useParallax = (speed = 0.12) => {
+const useParallax = (speed = 0.15, axis = "x", max = 70) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -18,12 +23,8 @@ const useParallax = (speed = 0.12) => {
     let rafId = null;
 
     const update = () => {
-      const rect = node.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
-      const elementCenter = rect.top + rect.height / 2;
-      const distance = elementCenter - viewportCenter;
-      const offset = Math.max(-40, Math.min(40, distance * -speed));
-      node.style.transform = `translateY(${offset}px)`;
+      const offset = Math.max(-max, Math.min(max, window.scrollY * speed));
+      node.style.transform = axis === "x" ? `translateX(${offset}px)` : `translateY(${offset}px)`;
       rafId = null;
     };
 
@@ -33,13 +34,11 @@ const useParallax = (speed = 0.12) => {
 
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [speed]);
+  }, [speed, axis, max]);
 
   return ref;
 };
