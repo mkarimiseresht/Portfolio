@@ -3,6 +3,7 @@ import "./about.css";
 import { Link } from "react-scroll";
 import profile from "../../data/profile";
 import useScrollReveal from "../../hooks/useScrollReveal";
+import useParallax from "../../hooks/useParallax";
 import { ArrowUpRightIcon } from "../Icons/Icons";
 import photo from "../../assets/photo2.jpg";
 
@@ -29,6 +30,7 @@ const TypedTagline = ({ text }) => {
 
 const About = ({ githubProfile, status }) => {
   const revealRef = useScrollReveal();
+  const parallaxRef = useParallax(0.12);
 
   const stats = [
     { label: "public repos", value: githubProfile?.publicRepos },
@@ -77,7 +79,7 @@ const About = ({ githubProfile, status }) => {
         </div>
 
         <div className="about__photo-wrap in-view" aria-hidden="false">
-          <div className="about__photo-frame">
+          <div className="about__photo-frame" ref={parallaxRef}>
             <div className="about__mesh" aria-hidden="true">
               <div className="about__mesh-glow" />
               <svg className="about__mesh-grid" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
