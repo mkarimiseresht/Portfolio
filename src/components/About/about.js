@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import profile from "../../data/profile";
 import useScrollReveal from "../../hooks/useScrollReveal";
 import useParallax from "../../hooks/useParallax";
+import ParticleNetwork from "../../hooks/ParticleNetwork";
 import { ArrowUpRightIcon } from "../Icons/Icons";
 import photo from "../../assets/photo2.jpg";
 
@@ -79,6 +80,7 @@ const About = ({ githubProfile, status }) => {
         </div>
 
         <div className="about__photo-wrap in-view" aria-hidden="false">
+          <ParticleNetwork />
           <div className="about__photo-frame">
             <div className="about__mesh" aria-hidden="true" ref={parallaxRef}>
               <div className="about__mesh-glow" />
